@@ -1,4 +1,4 @@
-angular.module('rtfmApp').controller('threadCtrl', function ($scope, threadRef, $firebaseObject, commentsRef, $firebaseArray) {
+angular.module('rtfmApp').controller('threadCtrl', function ($scope, threadRef, $firebaseObject, commentsRef, $firebaseArray, threadsService) {
     
     var thread = $firebaseObject(threadRef);
     
@@ -9,7 +9,8 @@ angular.module('rtfmApp').controller('threadCtrl', function ($scope, threadRef, 
     $scope.createComment = function(username, text){
         $scope.comments.$add({
             username: username,
-            text: text
+            text: text,
+            timestamp: threadsService.getTime()
         });
     };
 

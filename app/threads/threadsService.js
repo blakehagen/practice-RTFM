@@ -15,6 +15,10 @@ angular.module('rtfmApp').service('threadsService', function (fb) {
     this.getComments = function (threadId) {
         return new Firebase(fb.url + '/threads/' + threadId + '/comments');
     }
+    
+    this.getTime = function(){
+        return Date();
+    }
 
 
 
