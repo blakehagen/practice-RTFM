@@ -15,8 +15,18 @@ angular.module('rtfmApp', ['firebase', 'ui.router'])
                 return threadService.getThreads();
             }}
         })
-        .state('threadsId', {
-            url: '/threads/:threadId'
+        .state('thread', {
+            url: '/threads/:threadId',
+            templateUrl: 'app/thread/thread.html',
+            controller: 'threadCtrl',
+            resolve: {
+                threadRef: function(threadService, $stateParams){
+                    return threadService.getThread($stateParams.threadId);
+                },
+                commentsRef: function(threadService, $stateParams){
+                    return threadService.getComments($stateParams.threadId);
+                }
+            }
         })
 
     $urlRouterProvider
