@@ -11,8 +11,8 @@ angular.module('rtfmApp', ['firebase', 'ui.router'])
             url: '/threads',
             templateUrl: 'app/threads/threads.html',
             controller: 'threadsCtrl',
-            resolve: {threadsRef: function(threadService){
-                return threadService.getThreads();
+            resolve: {threadsRef: function(threadsService){
+                return threadsService.getThreads();
             }}
         })
         .state('thread', {
@@ -20,11 +20,11 @@ angular.module('rtfmApp', ['firebase', 'ui.router'])
             templateUrl: 'app/thread/thread.html',
             controller: 'threadCtrl',
             resolve: {
-                threadRef: function(threadService, $stateParams){
-                    return threadService.getThread($stateParams.threadId);
+                threadRef: function(threadsService, $stateParams){
+                    return threadsService.getThread($stateParams.threadId);
                 },
-                commentsRef: function(threadService, $stateParams){
-                    return threadService.getComments($stateParams.threadId);
+                commentsRef: function(threadsService, $stateParams){
+                    return threadsService.getComments($stateParams.threadId);
                 }
             }
         })
