@@ -1,4 +1,4 @@
-angular.module('rtfmApp', ['firesbase', 'ui.router'])
+angular.module('rtfmApp', ['firebase', 'ui.router'])
 
     .constant('fb', {
         url: 'https://practice-rtfm-proj.firebaseio.com/'
@@ -10,7 +10,10 @@ angular.module('rtfmApp', ['firesbase', 'ui.router'])
         .state('threads', {
             url: '/threads',
             templateUrl: 'app/threads/threads.html',
-            controller: 'threadsCtrl'
+            controller: 'threadsCtrl',
+            resolve: {threadsRef: function(threadService){
+                return threadService.getThreads();
+            }}
         })
         .state('threadsId', {
             url: '/threads/:threadId'
