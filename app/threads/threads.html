@@ -1,3 +1,59 @@
+<h2>RTFM PROJECT (PRACTICE)</h2>
+<p></p>
+<div>
+    <div name="loginForm" ng-hide="authData">
+        <div>
+            <button ng-click="googleLogin()">Sign in with Google</button>
+        </div>
+    </div>
+</div>
+
+<div ng-show="authData">
+    <span>Logged in as: {{ authData.uid }}</span>
+    <button ng-click="authObj.$unauth()">Log Out</button>
+    <div name="userForm">
+        <div>
+            <input type="text" ng-model="user.name" placeholder="Name...">
+            <input type="email" ng-model="email" placeholder="Email...">
+        </div>
+    </div>
+
+    <p>Threads</p>
+    <form name="newThreadForm">
+        <input type="text" ng-model="newThreadTitle" placeholder="New thread title..." required/>
+        <input type="text" ng-model="username" placeholder="Username..." required/>
+        <button ng-disabled="newThreadForm.$invalid" ng-click="createThread(username, newThreadTitle)">Add Thread</button>
+    </form>
+
+    <ul>
+        <li ng-repeat="thread in threads">
+            <a ng-href="#/threads/{{thread.$id}}">
+                <span>{{ thread.title }}</span>
+                <span>(by {{ thread.username }})</span>
+                <span>Posted {{ thread.timestamp }}</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
 <div>
     <p>Threads</p>
 
